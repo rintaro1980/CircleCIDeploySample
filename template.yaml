@@ -19,7 +19,7 @@ Resources:
     Properties:
       CodeUri: hello_world/
       Handler: app.lambda_handler
-      Runtime: python3.6
+      Runtime: python3.8
       Events:
         HelloWorld:
           Type: Api
