@@ -45,7 +45,7 @@ jobs:
       - run:
           name: sam-build
           command: |
-            source .venv/bin/python
+            source .venv/bin/activate
 
             aws --version
             sam --version
