@@ -45,8 +45,8 @@ jobs:
       - run:
           name: sam-build
           command: |
-            python3 -m venv venv
-            . venv/bin/activate
+            source .venv/bin/activate
+            
             pipenv install awscli
             pipenv install aws-sam-cli
             aws --version
