@@ -97,7 +97,7 @@ jobs:
             make deploy
 
 workflows:
-  version: 2.1
+  version: 2
   release-dev-workflow:
     jobs:
       - setup:
