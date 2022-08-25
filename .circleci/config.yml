@@ -97,14 +97,14 @@ jobs:
             make deploy
 
 workflows:
-  version: 2
+  # version: 2
   release-dev-workflow:
     jobs:
       - setup:
           filters:
             branches:
               only:
-                - master
+                - main
                 - /^issues\/\d+$/
 
       - build:
@@ -114,7 +114,7 @@ workflows:
           filters:
             branches:
               only:
-                - master
+                - main
                 - /^issues\/\d+$/
 
       - deploy:
@@ -124,7 +124,7 @@ workflows:
           filters:
             branches:
               only:
-                - master
+                - main
                 - /^issues\/\d+$/
 
   release-prod-workflow:
