@@ -37,7 +37,7 @@ Resources:
         Fn::Transform:
           Name: AWS::Include
           Parameters:
-            Location: !Sub s3://cm-yamamoto-circleci-deploy-sample-bucket${SystemEnv}/swagger.yaml
+            Location: !Sub s3://cm-yamamoto-circleci-deploy-sample-bucket-${SystemEnv}/swagger.yaml
 
 Outputs:
   HelloWorldApiUrl:
