@@ -1,0 +1,44 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: CircleCIDeploySample
+
+Globals:
+  Function:
+    Timeout: 3
+
+Parameters:
+  SystemEnv:
+    Type: String
+    AllowedValues:
+      - prod
+      - dev
+
+Resources:
+  HelloWorldFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: hello_world/
+      Handler: app.lambda_handler
+      Runtime: python3.6
+      Events:
+        HelloWorld:
+          Type: Api
+          Properties:
+            Path: /message/{id}
+            Method: get
+            RestApiId: !Ref HelloWorldApi
+
+  HelloWorldApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      Name: !Sub CircleCIDeploySample-Api-${SystemEnv}
+      StageName: !Sub ${SystemEnv}
+      DefinitionBody:
+        Fn::Transform:
+          Name: AWS::Include
+          Parameters:
+            Location: !Sub s3://cm-fujii-circleci-deploy-sample-bucket${SystemEnv}/swagger.yaml
+
+Outputs:
+  HelloWorldApiUrl:
+    Value: !Sub https://${HelloWorldApi}.execute-api.${AWS::Region}.amazonaws.com/${SystemEnv}/message/{id}
