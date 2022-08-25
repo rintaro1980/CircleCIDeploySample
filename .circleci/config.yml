@@ -45,7 +45,8 @@ jobs:
       - run:
           name: sam-build
           command: |
-            source  /Users/rintaroyamamoto/.local/share/virtualenvs/CircleCIDeploySample-O1P36A6Z/bin/activate
+            python3 -m venv venv
+            . venv/bin/activate
 
             aws --version
             sam --version
