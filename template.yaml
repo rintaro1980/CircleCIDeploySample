@@ -19,7 +19,7 @@ Resources:
     Properties:
       CodeUri: hello_world/
       Handler: app.lambda_handler
-      Runtime: python3.6
+      Runtime: python3.8
       Events:
         HelloWorld:
           Type: Api
@@ -37,7 +37,7 @@ Resources:
         Fn::Transform:
           Name: AWS::Include
           Parameters:
-            Location: !Sub s3://cm-fujii-circleci-deploy-sample-bucket${SystemEnv}/swagger.yaml
+            Location: !Sub s3://cm-yamamoto-circleci-deploy-sample-bucket${SystemEnv}/swagger.yaml
 
 Outputs:
   HelloWorldApiUrl:
